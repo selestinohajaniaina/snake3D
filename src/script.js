@@ -7,7 +7,7 @@ camera.position.set( 2 , 10 , 20 );
 scene.add( camera );
 
 const renderer = new THREE.WebGLRenderer();
-renderer.setSize( window.innerWidth , window.innerHeight );
+renderer.setSize( 1100 , 600 );
 renderer.shadowMap.enabled = true;
 bord.appendChild( renderer.domElement );
 

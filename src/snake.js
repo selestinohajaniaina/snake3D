@@ -7,31 +7,34 @@ scene.add( snake );
 var snakeW = [];
 var snakePosition = [];
 var veloX = 0;
+var veloY = 0;
 var veloZ = 0;
 
 function snakeP(){
     snake.position.x += veloX * blkSize / 10;
+    snake.position.y += veloY * blkSize / 10;
     snake.position.z += veloZ * blkSize / 10;
 
-    if( snake.position.x == food.position.x && snake.position.z == food.position.z ) {
+    if( snake.position.x == food.position.x && snake.position.y == food.position.y && snake.position.z == food.position.z ) {
         let n_snakeGeo = new THREE.BoxGeometry(1, 1, 1);
         let n_snakeMat = new THREE.MeshLambertMaterial( { color: 0x54e8c1 });
         let n_snake = new THREE.Mesh( n_snakeGeo, n_snakeMat );
         n_snake.castShadow = true;
         snakeW.push( n_snake );
 
-        snakePosition.unshift( [ food.position.x , food.position.z ] );
+        snakePosition.unshift( [ food.position.x , food.position.y , food.position.z ] );
         foodP();
 
         for(let i = 0; i < snakeW.length ; i++) {
             scene.add( snakeW[i] );
         }
     }
-    snakePosition.push( [ snake.position.x , snake.position.z ] );
+    snakePosition.push( [ snake.position.x , snake.position.y , snake.position.z ] );
 
 for(let i = 0; i < snakeW.length ; i++) {
     snakeW[i].position.x = snakePosition[i][0];
-    snakeW[i].position.z = snakePosition[i][1];
+    snakeW[i].position.y = snakePosition[i][1];
+    snakeW[i].position.z = snakePosition[i][2];
 }
     
     
@@ -44,19 +47,22 @@ for(let i = 0; i < snakeW.length ; i++) {
 function foodP(){
     let acceptPosition;
     let newX = getRandom();
+    let newY = getRandom();
     let newZ = getRandom();
 
     snakePosition.map( (e) => {
-        if( e[0] == newX && e[1] == newZ) {
+        if( e[0] == newX && e[1] == newY && e[2] == newZ ) {
             acceptPosition = true;
         }
     });
 
     if( acceptPosition ){
         food.position.x = newX;
+        food.position.y = newY;
         food.position.z = newZ;
     } else {
         food.position.x = getRandom();
+        food.position.y = getRandom();
         food.position.z = getRandom();
     }
     acceptPosition = true;
