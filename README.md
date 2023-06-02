@@ -10,7 +10,7 @@
 ```
  [ x ]: keyRight
  [ -x ]: keyLeft
- [ y ]: keyA
- [ -y ]: keyZ
+ [ z ]: keyDown
+ [ -z ]: keyUp
 ```
 ### on the second branch ( three ) , is the three axes [ x , y , z ]
