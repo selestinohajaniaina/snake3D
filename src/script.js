@@ -1,9 +1,10 @@
 const bord = document.querySelector('.app');
 
 const scene = new THREE.Scene();
+scene.background = new THREE.Color( 0x45b6fe );
 
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight );
-camera.position.set( 2 , 10 , 20 );
+camera.position.set( 20 , 20 , 20 );
 scene.add( camera );
 
 const renderer = new THREE.WebGLRenderer();

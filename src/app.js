@@ -1,7 +1,7 @@
 
 setInterval( () => {
     snakeP()
-} , 200 );
+} , 400 );
 
 function changeDrx(e) {
     console.log(e.keyCode);

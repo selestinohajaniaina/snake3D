@@ -17,3 +17,11 @@ const axesHelper = new THREE.AxesHelper( 5 );
 axesHelper.position.set( -0.5 , -0.5 , -0.5 );
 scene.add( axesHelper );
 
+const plan2 = new THREE.Mesh( planGeo , planMat );
+plan2.position.set( ( blkSize / 2 ) - 0.5 , blkSize -0.8 , - ( blkSize / 2 ) - 0.5 );
+const plan3 = new THREE.Mesh( planGeo , planMat );
+plan3.rotation.set( 0 , Math.PI / 2 , 0 );
+plan3.position.set( - ( blkSize / 2 ) - 0.5 , blkSize -0.8 , ( blkSize / 2 ) - 0.5 );
+
+scene.add( plan2 );
+scene.add( plan3 );
